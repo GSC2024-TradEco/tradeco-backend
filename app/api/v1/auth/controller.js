@@ -1,4 +1,5 @@
 const { StatusCodes } = require('http-status-codes');
+const { registerUser } = require('../../../services/sequelize/auth');
 
 const register = async (req, res, next) => {
   try {
@@ -6,7 +7,7 @@ const register = async (req, res, next) => {
 
     res.status(StatusCodes.CREATED).json({
       status: StatusCodes.CREATED,
-      msg: result.msg || 'Verify Mail',
+      msg: result.msg || 'CREATED',
       data: result.data || result,
     });
   } catch (err) {
