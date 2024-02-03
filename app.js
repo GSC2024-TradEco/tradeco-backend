@@ -1,5 +1,6 @@
 var express = require('express');
 var logger = require('morgan');
+const { errorHandlerMiddleware, notFoundMiddleware } = require('./app/middlewares');
 
 var app = express();
 
@@ -14,5 +15,8 @@ app.get('/', (req, res) => {
     data: null,
   });
 });
+
+app.use(notFoundMiddleware);
+app.use(errorHandlerMiddleware);
 
 module.exports = app;
