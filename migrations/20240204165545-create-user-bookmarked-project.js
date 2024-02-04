@@ -12,10 +12,18 @@ module.exports = {
       UserId: {
         allowNull: false,
         type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id',
+        },
       },
       ProjectId: {
         allowNull: false,
         type: Sequelize.INTEGER,
+        references: {
+          model: 'Projects',
+          key: 'id',
+        },
       },
       createdAt: {
         allowNull: false,
