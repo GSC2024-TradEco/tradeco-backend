@@ -1,7 +1,5 @@
-const { Op } = require('sequelize');
 const { NotFoundError, BadRequestError } = require('../../errors');
 const Project = require('../../../models').Project;
-const Post = require('../../../models').Post;
 
 const findAllProjects = async (req) => {
   const { page = 1, limit = 10 } = req.query;
@@ -40,19 +38,4 @@ const findOneProject = async (req) => {
   return project;
 };
 
-const getSuggestionProjects = async (req) => {
-  const { wastes } = req.body;
-  if (!wastes) throw new BadRequestError('No wastes provided');
-
-  const projects = await Project.findAll({
-    where: {
-      materials: {
-        [Op.overlap]: wastes,
-      },
-    },
-  });
-
-  return projects;
-};
-
-module.exports = { findAllProjects, findOneProject, getSuggestionProjects };
+module.exports = { findAllProjects, findOneProject };
