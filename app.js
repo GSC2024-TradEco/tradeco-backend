@@ -11,7 +11,7 @@ const authRouter = require('./app/api/v1/auth/router');
 const tipsRouter = require('./app/api/v1/tips/router');
 const postsRouter = require('./app/api/v1/posts/router');
 const projectsRouter = require('./app/api/v1/projects/router');
-const wastesrRouter = require('./app/api/v1/wastesr/router');
+const wastesrRouter = require('./app/api/v1/wastes/router');
 
 const v1 = `/api/v1`;
 
