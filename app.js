@@ -9,6 +9,7 @@ var app = express();
 
 const authRouter = require('./app/api/v1/auth/router');
 const tipsRouter = require('./app/api/v1/tips/router');
+const postsRouter = require('./app/api/v1/posts/router');
 
 const v1 = `/api/v1`;
 
@@ -26,6 +27,7 @@ app.get('/', (req, res) => {
 
 app.use(`${v1}`, authRouter);
 app.use(`${v1}`, tipsRouter);
+app.use(`${v1}`, postsRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
