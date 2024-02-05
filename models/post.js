@@ -16,7 +16,6 @@ module.exports = (sequelize, DataTypes) => {
     {
       title: DataTypes.STRING,
       description: DataTypes.TEXT,
-      type: DataTypes.ENUM('tip', 'waste'),
       image: DataTypes.STRING,
       UserId: DataTypes.INTEGER,
     },

@@ -17,12 +17,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT,
       },
-      type: {
-        allowNull: false,
-        type: Sequelize.ENUM,
-        values: ['tip', 'waste'],
-        defaultValue: 'tip',
-      },
       image: {
         allowNull: true,
         type: Sequelize.STRING,
