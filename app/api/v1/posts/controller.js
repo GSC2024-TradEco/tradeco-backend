@@ -1,6 +1,9 @@
 const { StatusCodes } = require('http-status-codes');
 
-const { findAllPosts } = require('../../../services/sequelize/posts');
+const {
+  findAllPosts,
+  createOnePost,
+} = require('../../../services/sequelize/posts');
 
 const findAll = async (req, res, next) => {
   try {
@@ -18,4 +21,18 @@ const findAll = async (req, res, next) => {
   }
 };
 
-module.exports = { findAll };
+const createOne = async (req, res, next) => {
+  try {
+    const result = await createOnePost(req);
+
+    res.status(StatusCodes.CREATED).json({
+      status: StatusCodes.CREATED,
+      msg: 'OK',
+      data: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { findAll, createOne };

@@ -1,3 +1,4 @@
+const { BadRequestError } = require('../../errors');
 const Post = require('../../../models').Post;
 const User = require('../../../models').User;
 
@@ -21,4 +22,26 @@ const findAllPosts = async (req) => {
   };
 };
 
-module.exports = { findAllPosts };
+const createOnePost = async (req) => {
+  const uid = '1';
+  const { title, description } = req.body;
+  if (!title || !description) {
+    throw new BadRequestError('Title and description must be provided');
+  }
+
+  const user = await User.findOne({
+    where: {
+      uid,
+    },
+  });
+
+  const post = await Post.create({
+    title,
+    description,
+    UserId: user.id,
+  });
+
+  return post;
+};
+
+module.exports = { findAllPosts, createOnePost };
