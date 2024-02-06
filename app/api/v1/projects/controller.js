@@ -3,7 +3,6 @@ const { StatusCodes } = require('http-status-codes');
 const {
   findAllProjects,
   findOneProject,
-  getSuggestionProjects,
 } = require('../../../services/sequelize/projects');
 
 const findAll = async (req, res, next) => {

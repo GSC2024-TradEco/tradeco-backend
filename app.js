@@ -11,7 +11,8 @@ const authRouter = require('./app/api/v1/auth/router');
 const tipsRouter = require('./app/api/v1/tips/router');
 const postsRouter = require('./app/api/v1/posts/router');
 const projectsRouter = require('./app/api/v1/projects/router');
-const wastesrRouter = require('./app/api/v1/wastes/router');
+const wastesRouter = require('./app/api/v1/wastes/router');
+const bookmarksRouter = require('./app/api/v1/bookmarks/router');
 
 const v1 = `/api/v1`;
 
@@ -31,7 +32,8 @@ app.use(`${v1}`, authRouter);
 app.use(`${v1}`, tipsRouter);
 app.use(`${v1}`, postsRouter);
 app.use(`${v1}`, projectsRouter);
-app.use(`${v1}`, wastesrRouter);
+app.use(`${v1}`, wastesRouter);
+app.use(`${v1}`, bookmarksRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

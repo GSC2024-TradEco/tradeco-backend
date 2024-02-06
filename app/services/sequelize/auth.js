@@ -12,7 +12,7 @@ const createUser = async (email, password, name) => {
       displayName: name,
     });
     const result = await sequelize.transaction(async (t) => {
-      sequelizeUser = await user.create(
+      sequelizeUser = await User.create(
         {
           uid: firebaseUser.uid,
           email: firebaseUser.email,
