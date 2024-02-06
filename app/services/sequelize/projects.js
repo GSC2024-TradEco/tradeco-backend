@@ -1,4 +1,4 @@
-const { NotFoundError, BadRequestError } = require('../../errors');
+const { NotFoundError } = require('../../errors');
 const Project = require('../../../models').Project;
 
 const findAllProjects = async (req) => {

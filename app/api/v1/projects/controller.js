@@ -36,18 +36,4 @@ const findOne = async (req, res, next) => {
   }
 };
 
-const getSuggestions = async (req, res, next) => {
-  try {
-    const result = await getSuggestionProjects(req);
-
-    res.status(StatusCodes.OK).json({
-      status: StatusCodes.OK,
-      msg: 'OK',
-      data: result,
-    });
-  } catch (err) {
-    next(err);
-  }
-};
-
-module.exports = { findAll, findOne, getSuggestions };
+module.exports = { findAll, findOne };
