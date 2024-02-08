@@ -4,10 +4,10 @@ const Project = require('../../../models').Project;
 const User = require('../../../models').User;
 const UserWaste = require('../../../models').UserWaste;
 
-const shareWastesUser = async (req) => {
+const createOneWaste = async (req) => {
   const uid = '1';
-  const { wastes } = req.body;
-  if (!wastes) throw new BadRequestError('No wastes provided');
+  const { waste } = req.body;
+  if (!waste) throw new BadRequestError('No wastes provided');
 
   const user = await User.findOne({
     where: {
@@ -15,13 +15,9 @@ const shareWastesUser = async (req) => {
     },
   });
 
-  const userWastesWithUserId = wastes.map((waste) => ({
+  const userWaste = await UserWaste.createOne({
     name: waste,
     UserId: user.id,
-  }));
-
-  const userWaste = await UserWaste.bulkCreate(userWastesWithUserId, {
-    updateOnDuplicate: ['name'],
   });
 
   return userWaste;
@@ -42,4 +38,4 @@ const getSuggestionProjects = async (req) => {
   return projects;
 };
 
-module.exports = { shareWastesUser, getSuggestionProjects };
+module.exports = { createOneWaste, getSuggestionProjects };

@@ -1,17 +1,17 @@
 const { StatusCodes } = require('http-status-codes');
 
 const {
-  shareWastesUser,
+  createOneWaste,
   getSuggestionProjects,
 } = require('../../../services/sequelize/wastes');
 
-const shareWastes = async (req, res, next) => {
+const createOne = async (req, res, next) => {
   try {
-    const result = await shareWastesUser(req);
+    const result = await createOneWaste(req);
 
-    res.status(StatusCodes.OK).json({
-      status: StatusCodes.OK,
-      msg: 'OK',
+    res.status(StatusCodes.CREATED).json({
+      status: StatusCodes.CREATED,
+      msg: 'CREATED',
       data: result,
     });
   } catch (err) {
@@ -33,4 +33,4 @@ const getSuggestions = async (req, res, next) => {
   }
 };
 
-module.exports = { shareWastes, getSuggestions };
+module.exports = { createOne, getSuggestions };
