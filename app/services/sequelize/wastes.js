@@ -23,6 +23,25 @@ const createOneWaste = async (req) => {
   return userWaste;
 };
 
+const deleteOneWaste = async (req) => {
+  const uid = '1';
+  const user = await User.findOne({
+    where: {
+      uid,
+    },
+  });
+  
+  const { id } = req.params;
+  const userWaste = await UserWaste.findOne({
+    id,
+    UserId: user.id,
+  });
+
+  await userWaste.destroy();
+
+  return;
+};
+
 const getSuggestionProjects = async (req) => {
   const { wastes } = req.body;
   if (!wastes) throw new BadRequestError('No wastes provided');
@@ -38,4 +57,4 @@ const getSuggestionProjects = async (req) => {
   return projects;
 };
 
-module.exports = { createOneWaste, getSuggestionProjects };
+module.exports = { createOneWaste, deleteOneWaste, getSuggestionProjects };
