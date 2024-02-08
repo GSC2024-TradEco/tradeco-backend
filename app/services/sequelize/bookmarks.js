@@ -65,8 +65,7 @@ const deleteBookmarkProject = async (req) => {
   if (!bookmarkedProject)
     throw new NotFoundError('Bookmarked Project not found');
 
-  await bookmarkedProject.delete();
-  await bookmarkedProject.save();
+  await bookmarkedProject.destroy();
 
   return;
 };

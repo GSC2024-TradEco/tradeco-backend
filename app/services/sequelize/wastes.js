@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const { BadRequestError } = require('../../errors');
+const { BadRequestError, NotFoundError } = require('../../errors');
 const Project = require('../../../models').Project;
 const User = require('../../../models').User;
 const UserWaste = require('../../../models').UserWaste;
@@ -15,7 +15,7 @@ const createOneWaste = async (req) => {
     },
   });
 
-  const userWaste = await UserWaste.createOne({
+  const userWaste = await UserWaste.create({
     name: waste,
     UserId: user.id,
   });
@@ -30,12 +30,13 @@ const deleteOneWaste = async (req) => {
       uid,
     },
   });
-  
+
   const { id } = req.params;
   const userWaste = await UserWaste.findOne({
     id,
     UserId: user.id,
   });
+  if (!userWaste) throw new NotFoundError('UserWaste not found');
 
   await userWaste.destroy();
 
