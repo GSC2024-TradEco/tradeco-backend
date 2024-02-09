@@ -21,6 +21,9 @@ module.exports = (sequelize, DataTypes) => {
       uid: DataTypes.STRING,
       email: DataTypes.STRING,
       displayName: DataTypes.STRING,
+      instagram: DataTypes.STRING,
+      longitude: DataTypes.FLOAT,
+      latitude: DataTypes.FLOAT,
     },
     {
       sequelize,
