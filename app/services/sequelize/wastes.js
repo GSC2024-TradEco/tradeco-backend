@@ -4,6 +4,27 @@ const Project = require('../../../models').Project;
 const User = require('../../../models').User;
 const UserWaste = require('../../../models').UserWaste;
 
+const getAllWastes = async (req) => {
+  const uid = '1';
+  const user = await User.findOne({
+    where: {
+      uid,
+    },
+  });
+
+  const userWastes = await UserWaste.findAndCountAll({
+    where: {
+      UserId: user.id,
+    },
+  });
+
+  return {
+    data: userWastes.rows,
+    pages: Math.ceil(userWastes.count / limit),
+    total: userWastes.count,
+  };
+};
+
 const createOneWaste = async (req) => {
   const uid = '1';
   const { waste } = req.body;
@@ -58,4 +79,9 @@ const getSuggestionProjects = async (req) => {
   return projects;
 };
 
-module.exports = { createOneWaste, deleteOneWaste, getSuggestionProjects };
+module.exports = {
+  getAllWastes,
+  createOneWaste,
+  deleteOneWaste,
+  getSuggestionProjects,
+};
