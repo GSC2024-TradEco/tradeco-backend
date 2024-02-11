@@ -60,7 +60,10 @@ const deleteBookmarkProject = async (req) => {
 
   const { id } = req.params;
   const bookmarkedProject = await UserBookmarkedProject.findOne({
-    where: { UserId: user.id, ProjectId: id },
+    where: {
+      UserId: user.id,
+      ProjectId: id,
+    },
   });
   if (!bookmarkedProject)
     throw new NotFoundError('Bookmarked Project not found');

@@ -4,7 +4,6 @@ const User = require('../../../models').User;
 
 const findAllPosts = async (req) => {
   const { page = 1, limit = 10 } = req.query;
-
   const posts = await Post.findAndCountAll({
     limit,
     offset: (page - 1) * limit,
