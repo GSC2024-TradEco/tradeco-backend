@@ -8,6 +8,7 @@ const {
 var app = express();
 
 const authRouter = require('./app/api/v1/auth/router');
+const usersRouter = require('./app/api/v1/users/router');
 const tipsRouter = require('./app/api/v1/tips/router');
 const postsRouter = require('./app/api/v1/posts/router');
 const projectsRouter = require('./app/api/v1/projects/router');
@@ -29,6 +30,7 @@ app.get('/', (req, res) => {
 });
 
 app.use(`${v1}`, authRouter);
+app.use(`${v1}`, usersRouter);
 app.use(`${v1}`, tipsRouter);
 app.use(`${v1}`, postsRouter);
 app.use(`${v1}`, projectsRouter);
