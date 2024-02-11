@@ -58,7 +58,9 @@ const getSuggestions = async (req, res, next) => {
     res.status(StatusCodes.OK).json({
       status: StatusCodes.OK,
       msg: 'OK',
-      data: result,
+      size: result.total,
+      page: result.pages,
+      data: result.data,
     });
   } catch (err) {
     next(err);

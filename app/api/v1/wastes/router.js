@@ -7,8 +7,8 @@ const {
 } = require('./controller');
 const router = express();
 
+router.post('/waste', createOne);
 router.get('/wastes', getAll);
-router.post('/wastes', createOne);
 router.delete('/wastes/:id', deleteOne);
 router.post('/wastes/project-suggestions', getSuggestions);
 

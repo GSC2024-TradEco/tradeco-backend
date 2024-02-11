@@ -12,10 +12,14 @@ const getAllWastes = async (req) => {
     },
   });
 
+  const { page = 1, limit = 10 } = req.query;
   const userWastes = await UserWaste.findAndCountAll({
+    limit,
+    offset: (page - 1) * limit,
     where: {
       UserId: user.id,
     },
+    attributes: ['id', 'name'],
   });
 
   return {
@@ -26,19 +30,21 @@ const getAllWastes = async (req) => {
 };
 
 const createOneWaste = async (req) => {
-  const uid = '1';
   const { waste } = req.body;
   if (!waste) throw new BadRequestError('No wastes provided');
 
+  const uid = '1';
   const user = await User.findOne({
     where: {
       uid,
     },
   });
 
-  const userWaste = await UserWaste.create({
-    name: waste,
-    UserId: user.id,
+  const [userWaste, created] = await UserWaste.findOrCreate({
+    where: {
+      name: waste,
+      UserId: user.id,
+    },
   });
 
   return userWaste;
@@ -54,8 +60,10 @@ const deleteOneWaste = async (req) => {
 
   const { id } = req.params;
   const userWaste = await UserWaste.findOne({
-    id,
-    UserId: user.id,
+    where: {
+      id,
+      UserId: user.id,
+    },
   });
   if (!userWaste) throw new NotFoundError('UserWaste not found');
 
@@ -68,15 +76,23 @@ const getSuggestionProjects = async (req) => {
   const { wastes } = req.body;
   if (!wastes) throw new BadRequestError('No wastes provided');
 
-  const projects = await Project.findAll({
+  const { page = 1, limit = 10 } = req.query;
+  const projects = await Project.findAndCountAll({
+    limit,
+    offset: (page - 1) * limit,
     where: {
       materials: {
         [Op.overlap]: wastes,
       },
     },
+    attributes: ['id', 'title', 'image', 'createdAt'],
   });
 
-  return projects;
+  return {
+    data: projects.rows,
+    pages: Math.ceil(projects.count / limit),
+    total: projects.count,
+  };
 };
 
 module.exports = {
