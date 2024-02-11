@@ -10,6 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       title: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       description: {
@@ -19,10 +20,12 @@ module.exports = {
       materials: {
         allowNull: false,
         type: Sequelize.ARRAY(Sequelize.STRING),
+        defaultValue: [],
       },
       steps: {
         allowNull: false,
         type: Sequelize.ARRAY(Sequelize.TEXT),
+        defaultValue: [],
       },
       image: {
         allowNull: true,
