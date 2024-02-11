@@ -5,7 +5,7 @@ const User = require('../../../models').User;
 const UserWaste = require('../../../models').UserWaste;
 
 const getAllWastes = async (req) => {
-  const uid = '1';
+  const { uid } = req.user;
   const user = await User.findOne({
     where: {
       uid,
@@ -33,7 +33,7 @@ const createOneWaste = async (req) => {
   const { waste } = req.body;
   if (!waste) throw new BadRequestError('No wastes provided');
 
-  const uid = '1';
+  const { uid } = req.user;
   const user = await User.findOne({
     where: {
       uid,
@@ -51,7 +51,7 @@ const createOneWaste = async (req) => {
 };
 
 const deleteOneWaste = async (req) => {
-  const uid = '1';
+  const { uid } = req.user;
   const user = await User.findOne({
     where: {
       uid,

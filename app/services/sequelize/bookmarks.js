@@ -5,7 +5,7 @@ const Project = require('../../../models').Project;
 const UserBookmarkedProject = require('../../../models').UserBookmarkedProject;
 
 const findAllBookmarks = async (req) => {
-  const uid = '1';
+  const { uid } = req.user;
   const user = await User.findOne({
     where: { uid },
   });
@@ -31,7 +31,7 @@ const findAllBookmarks = async (req) => {
 };
 
 const createBookmarkProject = async (req) => {
-  const uid = '1';
+  const { uid } = req.user;
   const user = await User.findOne({
     where: { uid },
   });
@@ -52,7 +52,7 @@ const createBookmarkProject = async (req) => {
 };
 
 const deleteBookmarkProject = async (req) => {
-  const uid = '1';
+  const { uid } = req.user;
   const user = await User.findOne({
     where: { uid },
   });

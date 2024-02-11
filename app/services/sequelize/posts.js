@@ -22,7 +22,7 @@ const findAllPosts = async (req) => {
 };
 
 const createOnePost = async (req) => {
-  const uid = '1';
+  const { uid } = req.user;
   const { title, description } = req.body;
   if (!title || !description) {
     throw new BadRequestError('Title and description must be provided');

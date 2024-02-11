@@ -36,7 +36,7 @@ const findOneProject = async (req) => {
   });
   if (!project) throw new NotFoundError('Project not found');
 
-  const uid = '1';
+  const { uid } = req.user;
   if (uid) {
     const user = await User.findOne({
       where: {
