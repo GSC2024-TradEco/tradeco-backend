@@ -19,7 +19,6 @@ const getAllWastes = async (req) => {
     where: {
       UserId: user.id,
     },
-    attributes: ['id', 'name'],
   });
 
   return {
@@ -85,7 +84,6 @@ const getSuggestionProjects = async (req) => {
         [Op.overlap]: wastes,
       },
     },
-    attributes: ['id', 'title', 'image', 'createdAt'],
   });
 
   return {

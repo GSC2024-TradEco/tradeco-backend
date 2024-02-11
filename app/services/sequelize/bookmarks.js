@@ -1,4 +1,4 @@
-const { NotFoundError } = require('../../errors');
+const { NotFoundError, BadRequestError } = require('../../errors');
 
 const User = require('../../../models').User;
 const Project = require('../../../models').Project;
@@ -16,10 +16,8 @@ const findAllBookmarks = async (req) => {
     limit,
     offset: (page - 1) * limit,
     where: { UserId: user.id },
-    attributes: ['id'],
     include: {
       model: Project,
-      attributes: ['id', 'title', 'image'],
     },
   });
 
@@ -43,10 +41,14 @@ const createBookmarkProject = async (req) => {
   });
   if (!project) throw new NotFoundError('Project not found');
 
-  const bookmark = await UserBookmarkedProject.create({
-    UserId: user.id,
-    ProjectId: project.id,
+  const [bookmark, created] = await UserBookmarkedProject.findOrCreate({
+    where: {
+      UserId: user.id,
+      ProjectId: project.id,
+    },
   });
+
+  if (!created) throw new BadRequestError('Project already bookmarked');
 
   return bookmark;
 };

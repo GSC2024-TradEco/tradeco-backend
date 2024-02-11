@@ -7,10 +7,8 @@ const findAllPosts = async (req) => {
   const posts = await Post.findAndCountAll({
     limit,
     offset: (page - 1) * limit,
-    attributes: ['id', 'title', 'description', 'image', 'createdAt'],
     include: {
       model: User,
-      attributes: ['id', 'uid', 'displayName'],
     },
   });
 
@@ -22,12 +20,12 @@ const findAllPosts = async (req) => {
 };
 
 const createOnePost = async (req) => {
-  const { uid } = req.user;
   const { title, description } = req.body;
   if (!title || !description) {
     throw new BadRequestError('Title and description must be provided');
   }
 
+  const { uid } = req.user;
   const user = await User.findOne({
     where: {
       uid,

@@ -7,7 +7,6 @@ const findAllTips = async (req) => {
   const tips = await Tip.findAndCountAll({
     limit,
     offset: (page - 1) * limit,
-    attributes: ['id', 'title', 'image', 'createdAt'],
   });
 
   return {
@@ -22,7 +21,6 @@ const findOneTip = async (req) => {
 
   const tip = await Tip.findOne({
     where: { id },
-    attributes: ['id', 'title', 'description', 'image', 'createdAt'],
   });
   if (!tip) throw new NotFoundError('Tip not found');
 

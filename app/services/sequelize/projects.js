@@ -9,7 +9,6 @@ const findAllProjects = async (req) => {
   const projects = await Project.findAndCountAll({
     limit,
     offset: (page - 1) * limit,
-    attributes: ['id', 'title', 'image', 'createdAt'],
   });
 
   return {
@@ -23,16 +22,6 @@ const findOneProject = async (req) => {
   const { id } = req.params;
   const project = await Project.findOne({
     where: { id },
-    attributes: [
-      'id',
-      'title',
-      'description',
-      'materials',
-      'steps',
-      'image',
-      'reference',
-      'createdAt',
-    ],
   });
   if (!project) throw new NotFoundError('Project not found');
 
@@ -47,7 +36,6 @@ const findOneProject = async (req) => {
       where: {
         UserId: user.id,
       },
-      attributes: ['name'],
     });
     const userWasteMaterials = userWastes.map((waste) => waste.name);
 
@@ -60,10 +48,8 @@ const findOneProject = async (req) => {
       where: {
         name: missingMaterials,
       },
-      attributes: ['name'],
       include: {
         model: User,
-        attributes: ['id', 'displayName'],
       },
     });
     project.dataValues.usersWithMissingMaterials = usersWithMissingMaterials;
