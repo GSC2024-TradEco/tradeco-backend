@@ -12,13 +12,18 @@ const findAllBookmarks = async (req) => {
   if (!user) throw new NotFoundError('User not found');
 
   const { page = 1, limit = 10 } = req.query;
-  const bookmarks = await UserBookmarkedProject.findAndCountAll({
+
+  const bookmarks = await Project.findAndCountAll({
     limit,
     offset: (page - 1) * limit,
-    where: { UserId: user.id },
-    include: {
-      model: Project,
-    },
+    include: [
+      {
+        model: User,
+        where: { id: user.id },
+        through: { model: UserBookmarkedProject },
+        attributes: [],
+      },
+    ],
   });
 
   return {
