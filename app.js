@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.get('/', (req, res) => {
   res.status(200).json({
     status: 200,
-    message: 'Welcome to ZeroWaste API',
+    message: 'Welcome to TradEco API',
     data: null,
   });
 });

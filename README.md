@@ -1,1 +1,1 @@
-# zerowaste-backend
+# tradeco-backend
