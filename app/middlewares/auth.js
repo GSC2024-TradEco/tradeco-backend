@@ -1,5 +1,5 @@
 const admin = require('../../config/firebase');
-const { UnauthenticatedError } = require('../errors/unauthenticated');
+const { UnauthenticatedError } = require('../errors');
 
 const authenticateUser = async (req, res, next) => {
   try {
@@ -14,10 +14,6 @@ const authenticateUser = async (req, res, next) => {
     }
 
     const payload = await admin.auth().verifyIdToken(token);
-
-    if (payload.email_verified === false) {
-      throw new UnauthenticatedError('Email not Verified');
-    }
 
     req.user = payload;
     next();
