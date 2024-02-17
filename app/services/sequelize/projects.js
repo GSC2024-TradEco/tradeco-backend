@@ -25,11 +25,10 @@ const findOneProject = async (req) => {
   });
   if (!project) throw new NotFoundError('Project not found');
 
-  const { uid } = req.user;
-  if (uid) {
+  if (req.user) {
     const user = await User.findOne({
       where: {
-        uid,
+        uid: req.user.uid,
       },
     });
     const userWastes = await UserWaste.findAll({
@@ -52,6 +51,7 @@ const findOneProject = async (req) => {
         model: User,
       },
     });
+    project.dataValues.missingMaterials = missingMaterials;
     project.dataValues.usersWithMissingMaterials = usersWithMissingMaterials;
 
     return project;
