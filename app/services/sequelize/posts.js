@@ -1,4 +1,5 @@
 const { BadRequestError } = require('../../errors');
+const { upload } = require('../gcs');
 const Post = require('../../../models').Post;
 const User = require('../../../models').User;
 
@@ -10,6 +11,7 @@ const findAllPosts = async (req) => {
     include: {
       model: User,
     },
+    order: [['createdAt', 'DESC']],
   });
 
   return {
@@ -32,9 +34,18 @@ const createOnePost = async (req) => {
     },
   });
 
+  let postImage = null;
+  if (req.fil) {
+    console.log('image');
+    postImage = await upload(req.file);
+  } else {
+    console.log('no image');
+  }
+
   const post = await Post.create({
     title,
     description,
+    image: postImage,
     UserId: user.id,
   });
 
