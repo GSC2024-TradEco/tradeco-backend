@@ -9,7 +9,6 @@ const findAllBookmarks = async (req) => {
   const user = await User.findOne({
     where: { uid },
   });
-  if (!user) throw new NotFoundError('User not found');
 
   const { page = 1, limit = 10 } = req.query;
 
@@ -38,7 +37,6 @@ const createBookmarkProject = async (req) => {
   const user = await User.findOne({
     where: { uid },
   });
-  if (!user) throw new NotFoundError('User not found');
 
   const { projectId } = req.body;
   const project = await Project.findOne({
@@ -63,7 +61,6 @@ const deleteBookmarkProject = async (req) => {
   const user = await User.findOne({
     where: { uid },
   });
-  if (!user) throw new NotFoundError('User not found');
 
   const { id } = req.params;
   const bookmarkedProject = await UserBookmarkedProject.findOne({

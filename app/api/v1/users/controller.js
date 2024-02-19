@@ -4,6 +4,7 @@ const {
   findOneUser,
   updateInstagramUser,
   updateLocationUser,
+  deleteAccountUser,
 } = require('../../../services/sequelize/users');
 
 const findOne = async (req, res, next) => {
@@ -48,8 +49,23 @@ const updateLocation = async (req, res, next) => {
   }
 };
 
+const deleteAccount = async (req, res, next) => {
+  try {
+    const result = await deleteAccountUser(req);
+
+    res.status(StatusCodes.OK).json({
+      status: StatusCodes.OK,
+      msg: 'OK',
+      data: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   findOne,
   updateInstagram,
   updateLocation,
+  deleteAccount,
 };

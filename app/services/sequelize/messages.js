@@ -37,7 +37,6 @@ const createOneMessage = async (req) => {
       uid,
     },
   });
-  if (!user) throw new NotFoundError('User not found');
 
   const chat = await Chat.findOne({
     where: {
