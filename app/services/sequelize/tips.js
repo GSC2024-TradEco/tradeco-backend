@@ -27,4 +27,16 @@ const findOneTip = async (req) => {
   return tip;
 };
 
-module.exports = { findAllTips, findOneTip };
+const getRandomTip = async () => {
+  const totalCount = await Tip.count();
+  const randomId = Math.floor(Math.random() * totalCount) + 1;
+  
+  const tip = await Tip.findOne({
+    where: { id: randomId },
+  });
+  if (!tip) throw new NotFoundError('Tip not found');
+
+  return tip;
+};
+
+module.exports = { findAllTips, findOneTip, getRandomTip };

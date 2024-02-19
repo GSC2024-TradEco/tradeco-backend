@@ -1,14 +1,14 @@
 const { StatusCodes } = require('http-status-codes');
 
 const {
-  findAllTips,
-  findOneTip,
-  getRandomTip,
-} = require('../../../services/sequelize/tips');
+  findAllChats,
+  createOneChat,
+  findChatUser,
+} = require('../../../services/sequelize/chats');
 
 const findAll = async (req, res, next) => {
   try {
-    const result = await findAllTips(req);
+    const result = await findAllChats(req);
 
     res.status(StatusCodes.OK).json({
       status: StatusCodes.OK,
@@ -22,9 +22,23 @@ const findAll = async (req, res, next) => {
   }
 };
 
-const findOne = async (req, res, next) => {
+const createOne = async (req, res, next) => {
   try {
-    const result = await findOneTip(req);
+    const result = await createOneChat(req);
+
+    res.status(StatusCodes.CREATED).json({
+      status: StatusCodes.CREATED,
+      msg: 'OK',
+      data: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+const findChat = async (req, res, next) => {
+  try {
+    const result = await findChatUser(req);
 
     res.status(StatusCodes.OK).json({
       status: StatusCodes.OK,
@@ -36,18 +50,4 @@ const findOne = async (req, res, next) => {
   }
 };
 
-const getRandom = async (req, res, next) => {
-  try {
-    const result = await getRandomTip(req);
-
-    res.status(StatusCodes.OK).json({
-      status: StatusCodes.OK,
-      msg: 'OK',
-      data: result,
-    });
-  } catch (err) {
-    next(err);
-  }
-};
-
-module.exports = { findAll, findOne, getRandom };
+module.exports = { findAll, createOne, findChat };
