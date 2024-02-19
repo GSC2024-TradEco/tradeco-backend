@@ -30,7 +30,7 @@ const findOneTip = async (req) => {
 const getRandomTip = async () => {
   const totalCount = await Tip.count();
   const randomId = Math.floor(Math.random() * totalCount) + 1;
-  
+
   const tip = await Tip.findOne({
     where: { id: randomId },
   });
