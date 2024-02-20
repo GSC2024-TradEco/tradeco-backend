@@ -1,5 +1,8 @@
 var express = require('express');
 var logger = require('morgan');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+
 const {
   errorHandlerMiddleware,
   notFoundMiddleware,
@@ -20,6 +23,7 @@ const v1 = `/api/v1`;
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.status(200).json({

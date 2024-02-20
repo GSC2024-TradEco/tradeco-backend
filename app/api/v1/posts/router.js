@@ -6,6 +6,6 @@ const router = express();
 const upload = require('../../../middlewares/multer');
 
 router.get('/posts', findAll);
-router.post('/post', upload, authenticateUser, createOne);
+router.put('/post', upload.single('file'), authenticateUser, createOne);
 
 module.exports = router;

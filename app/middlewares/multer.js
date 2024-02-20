@@ -22,6 +22,6 @@ const processFile = Multer({
   storage: Multer.memoryStorage(),
   limits: { fileSize: maxSize },
   fileFilter: fileFilter,
-}).single('file');
+});
 
 module.exports = processFile;

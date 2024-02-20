@@ -2,6 +2,7 @@ const { NotFoundError } = require('../../errors');
 const User = require('../../../models').User;
 const Project = require('../../../models').Project;
 const UserWaste = require('../../../models').UserWaste;
+const UserBookmarkedProject = require('../../../models').UserBookmarkedProject;
 
 const findAllProjects = async (req) => {
   const { page = 1, limit = 10 } = req.query;
@@ -31,6 +32,13 @@ const findOneProject = async (req) => {
         uid: req.user.uid,
       },
     });
+    const bookmarked = await UserBookmarkedProject.findOne({
+      where: {
+        UserId: user.id,
+        ProjectId: project.id,
+      },
+    });
+
     const userWastes = await UserWaste.findAll({
       where: {
         UserId: user.id,
@@ -51,6 +59,8 @@ const findOneProject = async (req) => {
         model: User,
       },
     });
+
+    project.dataValues.bookmarked = bookmarked;
     project.dataValues.missingMaterials = missingMaterials;
     project.dataValues.usersWithMissingMaterials = usersWithMissingMaterials;
 

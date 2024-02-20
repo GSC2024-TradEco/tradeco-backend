@@ -36,11 +36,8 @@ const createOnePost = async (req) => {
 
   let postImage = null;
   if (req.fil) {
-    console.log('image');
     postImage = await upload(req.file);
-  } else {
-    console.log('no image');
-  }
+  } 
 
   const post = await Post.create({
     title,
