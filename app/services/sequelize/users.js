@@ -1,3 +1,5 @@
+const { BadRequestError } = require('../../errors');
+
 const User = require('../../../models').User;
 
 const deleteUser = async (user) => {
@@ -19,8 +21,6 @@ const deleteUser = async (user) => {
   } catch (err) {
     throw new BadRequestError(`Could not delete user from Firebase: ${err}`);
   }
-
-  return `User ${user.uid} deleted`;
 };
 
 const findOneUser = async (req) => {
