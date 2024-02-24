@@ -9,15 +9,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      ChatId: {
+      SenderId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'Chats',
+          model: 'Users',
           key: 'id',
         },
       },
-      UserId: {
+      ReceiverId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
