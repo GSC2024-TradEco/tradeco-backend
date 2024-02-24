@@ -1,5 +1,6 @@
 const { BadRequestError, NotFoundError } = require('../../errors');
 const { upload } = require('../gcs');
+const { Op } = require('sequelize');
 const Message = require('../../../models').Message;
 const User = require('../../../models').User;
 
@@ -28,17 +29,17 @@ const findAllMessages = async (req) => {
 
   const { page = 1, limit = 10 } = req.query;
   const messages = await Message.findAndCountAll({
-    limit,
-    offset: (page - 1) * limit,
     where: {
-      SenderId: sender.id,
-      ReceiverId: receiver.id,
+      [Op.or]: [
+        { SenderId: sender.id, ReceiverId: receiver.id },
+        { SenderId: receiver.id, ReceiverId: sender.id },
+      ],
     },
     include: [
       { model: User, as: 'Sender' },
       { model: User, as: 'Receiver' },
     ],
-    order: [['createdAt', 'DESC']],
+    order: [['createdAt', 'ASC']],
   });
 
   return {

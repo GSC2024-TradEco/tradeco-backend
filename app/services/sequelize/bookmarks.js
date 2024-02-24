@@ -11,10 +11,7 @@ const findAllBookmarks = async (req) => {
   });
 
   const { page = 1, limit = 10 } = req.query;
-
   const bookmarks = await Project.findAndCountAll({
-    limit,
-    offset: (page - 1) * limit,
     include: [
       {
         model: User,

@@ -4,10 +4,7 @@ const Tip = require('../../../models').Tip;
 
 const findAllTips = async (req) => {
   const { page = 1, limit = 10 } = req.query;
-  const tips = await Tip.findAndCountAll({
-    limit,
-    offset: (page - 1) * limit,
-  });
+  const tips = await Tip.findAndCountAll({});
 
   return {
     data: tips.rows,

@@ -7,10 +7,7 @@ const UserBookmarkedProject = require('../../../models').UserBookmarkedProject;
 const findAllProjects = async (req) => {
   const { page = 1, limit = 10 } = req.query;
 
-  const projects = await Project.findAndCountAll({
-    limit,
-    offset: (page - 1) * limit,
-  });
+  const projects = await Project.findAndCountAll({});
 
   return {
     data: projects.rows,

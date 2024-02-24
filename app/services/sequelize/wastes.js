@@ -14,8 +14,6 @@ const getAllWastes = async (req) => {
 
   const { page = 1, limit = 10 } = req.query;
   const userWastes = await UserWaste.findAndCountAll({
-    limit,
-    offset: (page - 1) * limit,
     where: {
       UserId: user.id,
     },
@@ -77,8 +75,6 @@ const getSuggestionProjects = async (req) => {
 
   const { page = 1, limit = 10 } = req.query;
   const projects = await Project.findAndCountAll({
-    limit,
-    offset: (page - 1) * limit,
     where: {
       materials: {
         [Op.overlap]: wastes,
