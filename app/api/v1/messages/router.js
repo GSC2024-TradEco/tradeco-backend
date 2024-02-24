@@ -3,7 +3,9 @@ const { findAll, createOne } = require('./controller');
 const { authenticateUser } = require('../../../middlewares/auth');
 const router = express();
 
-router.get('/messages', authenticateUser, findAll);
-router.post('/message', authenticateUser, createOne);
+const upload = require('../../../middlewares/multer');
+
+router.get('/messages/:receiverId', authenticateUser, findAll);
+router.post('/message', upload.single('file'), authenticateUser, createOne);
 
 module.exports = router;

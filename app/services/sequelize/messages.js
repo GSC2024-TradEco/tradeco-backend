@@ -1,20 +1,43 @@
-const { BadRequestError } = require('../../errors');
-const Chat = require('../../../models').Chat;
+const { BadRequestError, NotFoundError } = require('../../errors');
+const { upload } = require('../gcs');
 const Message = require('../../../models').Message;
 const User = require('../../../models').User;
 
 const findAllMessages = async (req) => {
-  const { id } = req.params;
+  const { receiverId } = req.params;
+  const receiver = await User.findOne({
+    where: {
+      id: receiverId,
+    },
+  });
+  if (!receiver) {
+    throw new NotFoundError('User with receiverId not found');
+  }
+
+  const { uid } = req.user;
+  const sender = await User.findOne({
+    where: {
+      uid,
+    },
+  });
+  if (!sender) {
+    throw new NotFoundError('User with senderId not found');
+  }
+  console.log('sender.uid, receiver.uid');
+  console.log(sender.uid, receiver.uid);
+
   const { page = 1, limit = 10 } = req.query;
   const messages = await Message.findAndCountAll({
     limit,
     offset: (page - 1) * limit,
     where: {
-      ChatId: id,
+      SenderId: sender.id,
+      ReceiverId: receiver.id,
     },
-    include: {
-      model: User,
-    },
+    include: [
+      { model: User, as: 'Sender' },
+      { model: User, as: 'Receiver' },
+    ],
     order: [['createdAt', 'DESC']],
   });
 
@@ -26,29 +49,36 @@ const findAllMessages = async (req) => {
 };
 
 const createOneMessage = async (req) => {
-  const { chatId, text } = req.body;
-  if (!text) {
-    throw new BadRequestError('Text must be provided');
-  }
+  const { receiverId } = req.body;
+  const receiver = await User.findOne({
+    where: {
+      id: receiverId,
+    },
+  });
 
-  const { uid } = req.user;
-  const user = await User.findOne({
+  // const { uid } = req.user;
+  const uid = 'HePtihGWsOfwLFEfdeRhTBRXnrt2';
+  const sender = await User.findOne({
     where: {
       uid,
     },
   });
 
-  const chat = await Chat.findOne({
-    where: {
-      id: chatId,
-    },
-  });
-  if (!chat) throw new NotFoundError('Chat not found');
+  const { text } = req.body;
+  if (!text) {
+    throw new BadRequestError('Text must be provided');
+  }
+
+  let messageImage = null;
+  if (req.file) {
+    messageImage = await upload(req.file);
+  }
 
   const message = await Message.create({
-    ChatId: chat.id,
-    UserId: user.id,
+    SenderId: sender.id,
+    ReceiverId: receiver.id,
     text,
+    image: messageImage,
   });
 
   return message;

@@ -17,6 +17,7 @@ const postsRouter = require('./app/api/v1/posts/router');
 const projectsRouter = require('./app/api/v1/projects/router');
 const wastesRouter = require('./app/api/v1/wastes/router');
 const bookmarksRouter = require('./app/api/v1/bookmarks/router');
+const messagesRouter = require('./app/api/v1/messages/router');
 
 const v1 = `/api/v1`;
 
@@ -40,6 +41,7 @@ app.use(`${v1}`, postsRouter);
 app.use(`${v1}`, projectsRouter);
 app.use(`${v1}`, wastesRouter);
 app.use(`${v1}`, bookmarksRouter);
+app.use(`${v1}`, messagesRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
