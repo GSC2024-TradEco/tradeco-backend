@@ -19,23 +19,27 @@ cd tradeco-backend
 npm install
 ```
 
-### 3. Create your local PostgreSQL database and add your information to .env file based on .env.example
+### 3. Generate your own Firebase Service Account Key and add it as firebaseServiceAccountKey.json in the root folder
 
-### 4. Generate your own Firebase Service Account Key and add it as serviceAccountKey.json in the root folder
+### 4. Create your own Google Cloud Storage bucket in GCP and named it user_post-bucket then make it publicly available
 
-### 5. Migrate the table to the created database
+### 5. Generate your own GCP Service Account Key and add it as googleServiceAccountKey.json in the root folder
+
+### 6. Create your local PostgreSQL database and add your information to .env file based on .env.example
+
+### 7. Migrate the table to the created database
 
 ```bash
 sequelize db:migrate
 ```
 
-### 6. Run the server
+### 8. Run the server
 
 ```bash
 npm run dev
 ```
 
-### Server will run on your designated port / 9000
+### Server will run on port 9000
 
 ## Only want to test our API? 
 
@@ -44,4 +48,4 @@ You can use our deployed API below!
 https://tradeco-api-wyk7a4jpva-et.a.run.app/
 ```
 
-You can see our API documentation below!
+You can get our API documentation below!
