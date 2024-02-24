@@ -4,6 +4,41 @@ const { Op } = require('sequelize');
 const Message = require('../../../models').Message;
 const User = require('../../../models').User;
 
+const getUserChats = async (req) => {
+  const { uid } = req.user;
+  const user = await User.findOne({
+    where: {
+      uid,
+    },
+  });
+  if (!user) {
+    throw new NotFoundError('User not found');
+  }
+
+  const { page = 1, limit = 10 } = req.query;
+  const senderChats = await Message.findAll({
+    where: {
+      ReceiverId: user.id,
+    },
+    attributes: ['SenderId'],
+    group: ['SenderId', 'Sender.id'],
+    include: [
+      {
+        model: User,
+        as: 'Sender',
+      },
+    ],
+  });
+
+  return senderChats;
+
+  // return {
+  //   data: senderChats.rows,
+  //   pages: Math.ceil(senderChats.count / limit),
+  //   total: senderChats.count,
+  // };
+};
+
 const findAllMessages = async (req) => {
   const { receiverId } = req.params;
   const receiver = await User.findOne({
@@ -24,8 +59,6 @@ const findAllMessages = async (req) => {
   if (!sender) {
     throw new NotFoundError('User with senderId not found');
   }
-  console.log('sender.uid, receiver.uid');
-  console.log(sender.uid, receiver.uid);
 
   const { page = 1, limit = 10 } = req.query;
   const messages = await Message.findAndCountAll({
@@ -85,4 +118,4 @@ const createOneMessage = async (req) => {
   return message;
 };
 
-module.exports = { findAllMessages, createOneMessage };
+module.exports = { getUserChats, findAllMessages, createOneMessage };

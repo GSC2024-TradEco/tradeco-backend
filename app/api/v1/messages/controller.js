@@ -3,7 +3,22 @@ const { StatusCodes } = require('http-status-codes');
 const {
   findAllMessages,
   createOneMessage,
+  getUserChats,
 } = require('../../../services/sequelize/messages');
+
+const getUser = async (req, res, next) => {
+  try {
+    const result = await getUserChats(req);
+
+    res.status(StatusCodes.OK).json({
+      status: StatusCodes.OK,
+      msg: 'OK',
+      data: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
 
 const findAll = async (req, res, next) => {
   try {
@@ -35,4 +50,4 @@ const createOne = async (req, res, next) => {
   }
 };
 
-module.exports = { findAll, createOne };
+module.exports = { getUser, findAll, createOne };
