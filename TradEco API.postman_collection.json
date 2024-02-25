@@ -1,0 +1,2453 @@
+{
+	"info": {
+		"_postman_id": "7105d927-3a6f-42d5-b5c3-e6601330ae29",
+		"name": "TradEco API",
+		"description": "Welcome to TradEco API!",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33126901"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\": \"Johanes Raphael\",\r\n   \"email\": \"johanesraphael@gmail.com\",\r\n   \"password\": \"@Abcd1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/register",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						},
+						"description": "Use minimum of 8 characters of password"
+					},
+					"response": [
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"name\": \"Johanes Raphael\",\r\n   \"email\": \"johanesraphael@gmail.com\",\r\n   \"password\": \"@Abcd1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/api/v1/auth/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "278"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"116-99n3Pks8uyeW56HW8JYcBvnoPmc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Feb 2024 03:31:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 201,\n    \"msg\": \"CREATED\",\n    \"data\": {\n        \"id\": 5,\n        \"uid\": \"ryvBZ2hAmzcrD3U7LCYmeI9LD7y2\",\n        \"email\": \"johanesraphael@gmail.com\",\n        \"displayName\": \"Johanes Raphael\",\n        \"updatedAt\": \"2024-02-11T03:31:57.919Z\",\n        \"createdAt\": \"2024-02-11T03:31:57.919Z\",\n        \"instagram\": null,\n        \"longitude\": null,\n        \"latitude\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"tradecodeveloper@gmail.com\",\r\n    \"password\": \"@Abcd123\",\r\n    \"returnSecureToken\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={{WEB_KEY}}",
+							"protocol": "https",
+							"host": [
+								"identitytoolkit",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"v1",
+								"accounts:signInWithPassword"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{WEB_KEY}}"
+								}
+							]
+						},
+						"description": "Copy the response refreshToken and put it for authorization idToken"
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"tradecodeveloper@gmail.com\",\r\n    \"password\": \"@Abcd123\",\r\n    \"returnSecureToken\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBtaka384wT9BKv-eBbkkymxZPqr4UuBXU",
+									"protocol": "https",
+									"host": [
+										"identitytoolkit",
+										"googleapis",
+										"com"
+									],
+									"path": [
+										"v1",
+										"accounts:signInWithPassword"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "AIzaSyBtaka384wT9BKv-eBbkkymxZPqr4UuBXU"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Expires",
+									"value": "Mon, 01 Jan 1990 00:00:00 GMT"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Feb 2024 10:33:46 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "X-Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Referer"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Server",
+									"value": "ESF"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"kind\": \"identitytoolkit#VerifyPasswordResponse\",\n    \"localId\": \"HePtihGWsOfwLFEfdeRhTBRXnrt2\",\n    \"email\": \"tradecodeveloper@gmail.com\",\n    \"displayName\": \"Tradeco Developer\",\n    \"idToken\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6ImxrMDJBdyJ9.eyJpc3MiOiJodHRwczovL2lkZW50aXR5dG9vbGtpdC5nb29nbGUuY29tLyIsImF1ZCI6ImdzYzIwMjQtdHJhZGVjbyIsImlhdCI6MTcwODc3MDgyNiwiZXhwIjoxNzA5OTgwNDI2LCJ1c2VyX2lkIjoiSGVQdGloR1dzT2Z3TEZFZmRlUmhUQlJYbnJ0MiIsImVtYWlsIjoidHJhZGVjb2RldmVsb3BlckBnbWFpbC5jb20iLCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQiLCJ2ZXJpZmllZCI6ZmFsc2UsImRpc3BsYXlfbmFtZSI6IlRyYWRlY28gRGV2ZWxvcGVyIn0.OXZpwQj3bTkNk1XyVTk3JcL7qmme038w-HpM0iLA3gh8u21jn6qNyhBFJABjY-J66m17UMTuiiZTlw1RMq-UGa4J9sLrC-o6RkZHSk3Kndr3PW-Y7wsWn0ttDU-9jsS0vZlqzkhqU7CpANQ3s-iQtFrudLIW-0_DvXgy2chxVFjJ6GsGx6kUfN7Ak3795yrACraiyOG0Uq4lXFvQ4wQuGIXpB2PApDAkfkluMwhcBgALwPNGS2UdKmAFkOfeCY0T74X4MugWZBl3bRW-xXoEBpxY0YInp8rRKoK_Zj_LU9W4Pl-f1P_wOAq1Y7K-uN-QOyNz9TipF0o64nA-zCgPlg\",\n    \"registered\": true\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bookmarks",
+			"item": [
+				{
+					"name": "Get All Bookmarks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{idToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/bookmarks/projects",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookmarks",
+								"projects"
+							]
+						},
+						"description": "Need to pass user token from firebase auth"
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/v1/bookmarks/projects",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"bookmarks",
+										"projects"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "511"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1ff-FN5xSkgFKTh8oG8S0lJf0quEPfU\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Feb 2024 02:22:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"msg\": \"OK\",\n    \"size\": 2,\n    \"page\": 1,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"title\": \"Title 1\",\n            \"description\": \"Description 1\",\n            \"materials\": [\n                \"Plastic\",\n                \"Glass\"\n            ],\n            \"steps\": [\n                \"Step 1\"\n            ],\n            \"image\": \"Image 1\",\n            \"reference\": \"Reference 1\",\n            \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n            \"updatedAt\": \"2024-02-09T17:00:00.000Z\"\n        },\n        {\n            \"id\": 2,\n            \"title\": \"Title 2\",\n            \"description\": \"Description 2\",\n            \"materials\": [\n                \"CD\",\n                \"Cardboard\"\n            ],\n            \"steps\": [\n                \"Step 1\"\n            ],\n            \"image\": \"Image 2\",\n            \"reference\": \"Reference 1\",\n            \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n            \"updatedAt\": \"2024-02-09T17:00:00.000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create One Bookmark",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{idToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"projectId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/bookmarks/project",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookmarks",
+								"project"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"projectId\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/api/v1/bookmarks/project",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"bookmarks",
+										"project"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "142"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8e-ONwK7LbBSuf7s13U9wVKbpXmQJQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Feb 2024 13:57:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 201,\n    \"msg\": \"CREATED\",\n    \"data\": {\n        \"UserId\": 4,\n        \"ProjectId\": 2,\n        \"updatedAt\": \"2024-02-11T13:57:44.014Z\",\n        \"createdAt\": \"2024-02-11T13:57:44.014Z\"\n    }\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"projectId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/api/v1/bookmarks/project",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"bookmarks",
+										"project"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "61"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3d-Ko1NAgj3Uidgyys9r5tSD+T05bY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Feb 2024 13:57:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 400,\n    \"msg\": \"Project already bookmarked\",\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete One Bookmark",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{idToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/bookmarks/projects/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookmarks",
+								"projects",
+								"1"
+							]
+						},
+						"description": "Need to pass user token from firebase auth"
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/v1/bookmarks/projects/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"bookmarks",
+										"projects",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "25"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"19-9BhpvSbhyLLaUAnKbKdrS0jIIPY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Feb 2024 13:58:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"msg\": \"OK\"\n}"
+						},
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/v1/bookmarks/projects/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"bookmarks",
+										"projects",
+										"1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "63"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3f-T2J6muZhsdAuYmjUepRDrGphjjg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Feb 2024 13:58:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 404,\n    \"msg\": \"Bookmarked Project not found\",\n    \"data\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Get All Posts",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/posts",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/v1/posts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"posts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1186"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4a2-mRFdsp3W7LDgcdsVmUoS6+mjHMI\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Feb 2024 13:59:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"msg\": \"OK\",\n    \"size\": 3,\n    \"page\": 1,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"title\": \"Title 1\",\n            \"description\": \"Description 1\",\n            \"image\": \"Image 1\",\n            \"UserId\": 1,\n            \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n            \"updatedAt\": \"2024-02-09T17:00:00.000Z\",\n            \"User\": {\n                \"id\": 1,\n                \"uid\": \"1\",\n                \"email\": \"johanes@gmail.com\",\n                \"displayName\": \"Johanes\",\n                \"instagram\": \"johanes\",\n                \"longitude\": null,\n                \"latitude\": null,\n                \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n                \"updatedAt\": \"2024-02-09T17:00:00.000Z\"\n            }\n        },\n        {\n            \"id\": 2,\n            \"title\": \"Title 2\",\n            \"description\": \"Description 2\",\n            \"image\": \"Image 2\",\n            \"UserId\": 2,\n            \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n            \"updatedAt\": \"2024-02-09T17:00:00.000Z\",\n            \"User\": {\n                \"id\": 2,\n                \"uid\": \"2\",\n                \"email\": \"raphael@gmail.com\",\n                \"displayName\": \"Raphael\",\n                \"instagram\": \"raphael\",\n                \"longitude\": null,\n                \"latitude\": null,\n                \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n                \"updatedAt\": \"2024-02-09T17:00:00.000Z\"\n            }\n        },\n        {\n            \"id\": 3,\n            \"title\": \"Title 3\",\n            \"description\": \"Description 3\",\n            \"image\": \"Image 3\",\n            \"UserId\": 3,\n            \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n            \"updatedAt\": \"2024-02-09T17:00:00.000Z\",\n            \"User\": {\n                \"id\": 3,\n                \"uid\": \"3\",\n                \"email\": \"nandaputra@gmail.com\",\n                \"displayName\": \"Nandaputra\",\n                \"instagram\": \"nandaputra\",\n                \"longitude\": null,\n                \"latitude\": null,\n                \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n                \"updatedAt\": \"2024-02-09T17:00:00.000Z\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create One Post",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImExODE4ZjQ0ODk0MjI1ZjQ2MWQyMmI1NjA4NDcyMDM3MTc2MGY1OWIiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiY29iYSIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9nc2MyMDI0LXRyYWRlY28iLCJhdWQiOiJnc2MyMDI0LXRyYWRlY28iLCJhdXRoX3RpbWUiOjE3MDg4MTg5ODgsInVzZXJfaWQiOiJJMXJBQTJDdDBQZlJHNEVNdldGaENRTEczUHYyIiwic3ViIjoiSTFyQUEyQ3QwUGZSRzRFTXZXRmhDUUxHM1B2MiIsImlhdCI6MTcwODgyOTk1MywiZXhwIjoxNzA4ODMzNTUzLCJlbWFpbCI6ImNvYmFAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImNvYmFAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.ry6mj0AIXnpZPd2FHyEdmFJDrzpCSVimEJFvvETSIqL1d5X9iQZPXGh0En4Wr26O5IdrG-kEnxNjeeXGSKU8eVLCU-gVrv6Audxf63zBkVI-7qSSKRkRjPNnwu73BcSTpQvkDYZ8MmHxWWU3yoXGQk95uv-n_2ODpB-KmVEoYh7saOrboiWAQVdebD5Ghx7zx5RWC9Ci3VgFdRIQzSTFC5rpc9QXOYVIUe2IqZ5oN0nEMfxMHbkuR1szDJLE-hNrFM1cRb49ajFcIpH39uRS9zIvMnGXiL3KgvJKanvoGG62oeEcjaUUgyvwxuDp2t8EofvkoggdwIwQelO3osA83Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "title text",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "description text",
+									"type": "text"
+								},
+								{
+									"key": "files",
+									"type": "file",
+									"src": "/C:/Users/johan/OneDrive/Pictures/Screenshots/aws hari 2.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/post",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"post"
+							]
+						},
+						"description": "Need to pass user token from firebase auth"
+					},
+					"response": [
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Post Title\",\r\n    \"description\": \"Post Description\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/api/v1/post",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"post"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "197"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c5-RfPMHXXUl2JsJcskwe0H3Wmr91c\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Feb 2024 14:03:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 201,\n    \"msg\": \"OK\",\n    \"data\": {\n        \"id\": 4,\n        \"title\": \"Post Title\",\n        \"description\": \"Post Description\",\n        \"image\": null,\n        \"UserId\": 4,\n        \"updatedAt\": \"2024-02-11T14:03:28.421Z\",\n        \"createdAt\": \"2024-02-11T14:03:28.421Z\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "Get All Projects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/projects",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"projects"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/v1/projects",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"projects"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "511"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1ff-FN5xSkgFKTh8oG8S0lJf0quEPfU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Feb 2024 14:03:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"msg\": \"OK\",\n    \"size\": 2,\n    \"page\": 1,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"title\": \"Title 1\",\n            \"description\": \"Description 1\",\n            \"materials\": [\n                \"Plastic\",\n                \"Glass\"\n            ],\n            \"steps\": [\n                \"Step 1\"\n            ],\n            \"image\": \"Image 1\",\n            \"reference\": \"Reference 1\",\n            \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n            \"updatedAt\": \"2024-02-09T17:00:00.000Z\"\n        },\n        {\n            \"id\": 2,\n            \"title\": \"Title 2\",\n            \"description\": \"Description 2\",\n            \"materials\": [\n                \"CD\",\n                \"Cardboard\"\n            ],\n            \"steps\": [\n                \"Step 1\"\n            ],\n            \"image\": \"Image 2\",\n            \"reference\": \"Reference 1\",\n            \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n            \"updatedAt\": \"2024-02-09T17:00:00.000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get One Project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImFlYzU4NjcwNGNhOTZiZDcwMzZiMmYwZDI4MGY5NDlmM2E5NzZkMzgiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiVHJhZGVjbyBEZXZlbG9wZXIiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vZ3NjMjAyNC10cmFkZWNvIiwiYXVkIjoiZ3NjMjAyNC10cmFkZWNvIiwiYXV0aF90aW1lIjoxNzA4MTgxNDc3LCJ1c2VyX2lkIjoiSGVQdGloR1dzT2Z3TEZFZmRlUmhUQlJYbnJ0MiIsInN1YiI6IkhlUHRpaEdXc09md0xGRWZkZVJoVEJSWG5ydDIiLCJpYXQiOjE3MDgxOTM5NTIsImV4cCI6MTcwODE5NzU1MiwiZW1haWwiOiJ0cmFkZWNvZGV2ZWxvcGVyQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJ0cmFkZWNvZGV2ZWxvcGVyQGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.Y6iG1eGY23m9DxY10r9A14n7Mhf_Exk36rUspodMnQmOHJVWG-3AULfsQi8GG-hz1BLH89VE1T7_I339DHR55MG3lUGuUNXInWcHJgBUkvoFeKyDXe1-mlXrUoZBK9m1fDEA0M2EbKSpeDOd8lacymGKzrzY18bnw0JwblbzlXCMwm1YGAY_ABGlxhrGRxZdOCRKUqxLm6u5XOhmbw6m37sS5hdnzxed1dERtIdTZEytckN28Ik8Nb4u9TIn39Ey8T8a6Uh9ZGwyqk5LpGsV3f-bHdtcEdAzuuGON1y0b31JkBo4nQS-cEAThBIdFUQ7kdimMLzsHRS_DPlt15WSJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/projects/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"projects",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/v1/projects/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"projects",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1275"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4fb-be0ECeaQdTq44nLtIjC+Z/MP20U\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Feb 2024 14:04:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"msg\": \"OK\",\n    \"data\": {\n        \"id\": 1,\n        \"title\": \"Title 1\",\n        \"description\": \"Description 1\",\n        \"materials\": [\n            \"Plastic\",\n            \"Glass\"\n        ],\n        \"steps\": [\n            \"Step 1\"\n        ],\n        \"image\": \"Image 1\",\n        \"reference\": \"Reference 1\",\n        \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n        \"updatedAt\": \"2024-02-09T17:00:00.000Z\",\n        \"usersWithMissingMaterials\": [\n            {\n                \"id\": 4,\n                \"name\": \"Plastic\",\n                \"UserId\": 1,\n                \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n                \"updatedAt\": \"2024-02-10T04:08:26.481Z\",\n                \"User\": {\n                    \"id\": 1,\n                    \"uid\": \"1\",\n                    \"email\": \"johanes@gmail.com\",\n                    \"displayName\": \"Johanes\",\n                    \"instagram\": \"johanes\",\n                    \"longitude\": null,\n                    \"latitude\": null,\n                    \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n                    \"updatedAt\": \"2024-02-09T17:00:00.000Z\"\n                }\n            },\n            {\n                \"id\": 6,\n                \"name\": \"Glass\",\n                \"UserId\": 2,\n                \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n                \"updatedAt\": \"2024-02-09T17:00:00.000Z\",\n                \"User\": {\n                    \"id\": 2,\n                    \"uid\": \"2\",\n                    \"email\": \"raphael@gmail.com\",\n                    \"displayName\": \"Raphael\",\n                    \"instagram\": \"raphael\",\n                    \"longitude\": null,\n                    \"latitude\": null,\n                    \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n                    \"updatedAt\": \"2024-02-09T17:00:00.000Z\"\n                }\n            },\n            {\n                \"id\": 5,\n                \"name\": \"Glass\",\n                \"UserId\": 3,\n                \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n                \"updatedAt\": \"2024-02-09T17:00:00.000Z\",\n                \"User\": {\n                    \"id\": 3,\n                    \"uid\": \"3\",\n                    \"email\": \"nandaputra@gmail.com\",\n                    \"displayName\": \"Nandaputra\",\n                    \"instagram\": \"nandaputra\",\n                    \"longitude\": null,\n                    \"latitude\": null,\n                    \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n                    \"updatedAt\": \"2024-02-09T17:00:00.000Z\"\n                }\n            }\n        ]\n    }\n}"
+						},
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/v1/projects/100000000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"projects",
+										"100000000"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-dMZFzn+v/Z1SStQOdYZmT5no0mA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Feb 2024 14:04:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 404,\n    \"msg\": \"Project not found\",\n    \"data\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Tips",
+			"item": [
+				{
+					"name": "Get All Tips",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/tips",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tips"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/v1/tips",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"tips"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "511"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1ff-vT3fRjF6EJweyZq/SOZwSOo2RRE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Feb 2024 14:05:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"msg\": \"OK\",\n    \"size\": 3,\n    \"page\": 1,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"title\": \"Title 1\",\n            \"description\": \"Description 1\",\n            \"image\": \"Image 1\",\n            \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n            \"updatedAt\": \"2024-02-09T17:00:00.000Z\"\n        },\n        {\n            \"id\": 2,\n            \"title\": \"Title 2\",\n            \"description\": \"Description 2\",\n            \"image\": \"Image 2\",\n            \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n            \"updatedAt\": \"2024-02-09T17:00:00.000Z\"\n        },\n        {\n            \"id\": 3,\n            \"title\": \"Title 3\",\n            \"description\": \"Description 3\",\n            \"image\": \"Image 3\",\n            \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n            \"updatedAt\": \"2024-02-09T17:00:00.000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get One Tip",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/tips/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tips",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/v1/tips/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"tips",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "185"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b9-uiIMd60eOoy6o3F8f8hvVnqw7cY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Feb 2024 14:05:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"msg\": \"OK\",\n    \"data\": {\n        \"id\": 1,\n        \"title\": \"Title 1\",\n        \"description\": \"Description 1\",\n        \"image\": \"Image 1\",\n        \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n        \"updatedAt\": \"2024-02-09T17:00:00.000Z\"\n    }\n}"
+						},
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/v1/tips/100000000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"tips",
+										"100000000"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"30-/nM2ld3iNjim+gXJVFtTP1H6ynY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Feb 2024 14:05:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 404,\n    \"msg\": \"Tip not found\",\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Random Tips",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/tips/random",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tips",
+								"random"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/v1/tips/random",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"tips",
+										"random"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "206"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ce-cwiHJ+u/4zsO6NCImr0BBiiCduc\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Feb 2024 17:08:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"msg\": \"OK\",\n    \"data\": {\n        \"id\": 6,\n        \"title\": \"Reuse\",\n        \"description\": \"Menjadikan botol bekas sebagai pot bunga.\",\n        \"image\": null,\n        \"createdAt\": \"2024-02-01T17:00:00.000Z\",\n        \"updatedAt\": \"2024-02-01T17:00:00.000Z\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Wastes",
+			"item": [
+				{
+					"name": "Get All User Wastes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{idToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/wastes",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wastes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/v1/wastes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"wastes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "280"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"118-0lq3jimARBNMitFTjOBYKUBX7qM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Feb 2024 14:06:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"msg\": \"OK\",\n    \"size\": 2,\n    \"page\": 1,\n    \"data\": [\n        {\n            \"id\": 4,\n            \"name\": \"Plastic\",\n            \"UserId\": 4,\n            \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n            \"updatedAt\": \"2024-02-10T04:08:26.481Z\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Glass\",\n            \"UserId\": 4,\n            \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n            \"updatedAt\": \"2024-02-09T17:00:00.000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create One User Waste",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{idToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"waste\": \"Plastic\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/waste",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"waste"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"waste\": \"Plastic\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/api/v1/waste",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"waste"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "153"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"99-rhwpHpm5gaBUvg58xI5aKxC0XQg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Feb 2024 14:05:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 201,\n    \"msg\": \"CREATED\",\n    \"data\": {\n        \"id\": 14,\n        \"name\": \"Plastic\",\n        \"UserId\": 4,\n        \"updatedAt\": \"2024-02-11T14:05:48.427Z\",\n        \"createdAt\": \"2024-02-11T14:05:48.427Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete One User Waste",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{idToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/wastes/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wastes",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/v1/wastes/14",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"wastes",
+										"14"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "25"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"19-9BhpvSbhyLLaUAnKbKdrS0jIIPY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Feb 2024 14:06:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"msg\": \"OK\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Project Suggestions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{idToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"wastes\": [\"Cardboard\", \"CD\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/wastes/project-suggestions",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wastes",
+								"project-suggestions"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 Unauthenticated",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"wastes\": [\"Glass\", \"CD\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/api/v1/wastes/project-suggestions",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"wastes",
+										"project-suggestions"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "511"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1ff-FN5xSkgFKTh8oG8S0lJf0quEPfU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Feb 2024 14:06:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"msg\": \"OK\",\n    \"size\": 2,\n    \"page\": 1,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"title\": \"Title 1\",\n            \"description\": \"Description 1\",\n            \"materials\": [\n                \"Plastic\",\n                \"Glass\"\n            ],\n            \"steps\": [\n                \"Step 1\"\n            ],\n            \"image\": \"Image 1\",\n            \"reference\": \"Reference 1\",\n            \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n            \"updatedAt\": \"2024-02-09T17:00:00.000Z\"\n        },\n        {\n            \"id\": 2,\n            \"title\": \"Title 2\",\n            \"description\": \"Description 2\",\n            \"materials\": [\n                \"CD\",\n                \"Cardboard\"\n            ],\n            \"steps\": [\n                \"Step 1\"\n            ],\n            \"image\": \"Image 2\",\n            \"reference\": \"Reference 1\",\n            \"createdAt\": \"2024-02-09T17:00:00.000Z\",\n            \"updatedAt\": \"2024-02-09T17:00:00.000Z\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Update Instagram",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{idToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"instagram\": \"johanesraphaeln\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/user/instagram",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"instagram"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"instagram\": \"johanesraphaeln\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/api/v1/user/instagram",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"instagram"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "287"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"11f-xONA9QRM1oLlabDmXVvRP7qfxbk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Feb 2024 14:28:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"msg\": \"OK\",\n    \"data\": {\n        \"id\": 4,\n        \"uid\": \"wZ1ewGKWfMVbUBujPr8lDkpOBfM2\",\n        \"email\": \"johanesraphaeln@gmail.com\",\n        \"displayName\": \"Johanes Raphael\",\n        \"instagram\": \"johanesraphaeln\",\n        \"longitude\": null,\n        \"latitude\": null,\n        \"createdAt\": \"2024-02-11T03:31:23.273Z\",\n        \"updatedAt\": \"2024-02-11T14:28:09.887Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Location",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{idToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"longitude\": -6.360175,\r\n    \"latitude\": 106.246259\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/user/location",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"location"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"longitude\": -6.360175,\r\n    \"latitude\": 106.246259\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/api/v1/user/location",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"location"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "298"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12a-+pKJud9jymQMPTWOyMRa/dntBMY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Feb 2024 14:28:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"msg\": \"OK\",\n    \"data\": {\n        \"id\": 4,\n        \"uid\": \"wZ1ewGKWfMVbUBujPr8lDkpOBfM2\",\n        \"email\": \"johanesraphaeln@gmail.com\",\n        \"displayName\": \"Johanes Raphael\",\n        \"instagram\": \"johanesraphaeln\",\n        \"longitude\": -6.360175,\n        \"latitude\": 106.246259,\n        \"createdAt\": \"2024-02-11T03:31:23.273Z\",\n        \"updatedAt\": \"2024-02-11T14:28:18.063Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{idToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/user",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/v1/users/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "274"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"112-5wz3WB0tIiOlAnsIJJWD3j6UI4M\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 17 Feb 2024 18:26:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"msg\": \"OK\",\n    \"data\": {\n        \"id\": 1,\n        \"uid\": \"wJ6ucePe8HSHDae9Kpg2QQCJZkm1\",\n        \"email\": \"johanesraphaeln@gmail.com\",\n        \"displayName\": \"Johanes Raphael\",\n        \"instagram\": null,\n        \"longitude\": null,\n        \"latitude\": null,\n        \"createdAt\": \"2024-02-17T05:10:26.368Z\",\n        \"updatedAt\": \"2024-02-17T05:10:26.368Z\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Messages",
+			"item": [
+				{
+					"name": "Get All Messages",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{idToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/messages/7",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"messages",
+								"7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/v1/messages/7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"messages",
+										"7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "671"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29f-zjgBb6ijGuQ1E034GXQhGpHuw3c\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Feb 2024 09:30:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"msg\": \"OK\",\n    \"size\": 1,\n    \"page\": 1,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"SenderId\": 6,\n            \"ReceiverId\": 7,\n            \"text\": \"Test\",\n            \"createdAt\": \"2024-02-01T17:00:00.000Z\",\n            \"updatedAt\": \"2024-02-01T17:00:00.000Z\",\n            \"Sender\": {\n                \"id\": 6,\n                \"uid\": \"HePtihGWsOfwLFEfdeRhTBRXnrt2\",\n                \"email\": \"tradecodeveloper@gmail.com\",\n                \"displayName\": \"Tradeco Developer\",\n                \"instagram\": null,\n                \"longitude\": null,\n                \"latitude\": null,\n                \"createdAt\": \"2024-02-17T06:07:00.404Z\",\n                \"updatedAt\": \"2024-02-17T06:07:00.404Z\"\n            },\n            \"Receiver\": {\n                \"id\": 7,\n                \"uid\": \"ohHxoxWSQLRdSt194J0cNtC66YJ2\",\n                \"email\": \"alfahluzi@gmail.com\",\n                \"displayName\": \"aldi\",\n                \"instagram\": null,\n                \"longitude\": null,\n                \"latitude\": null,\n                \"createdAt\": \"2024-02-17T12:18:19.854Z\",\n                \"updatedAt\": \"2024-02-17T12:18:19.854Z\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create One Message",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{idToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "receiverId",
+									"value": "7",
+									"type": "text"
+								},
+								{
+									"key": "text",
+									"value": "ini pake gambar",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/johan/OneDrive/Pictures/Screenshots/aws hari 2.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/message",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"message"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "receiverId",
+											"value": "7",
+											"type": "text"
+										},
+										{
+											"key": "text",
+											"value": "ini pake gambar",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/johan/OneDrive/Pictures/Screenshots/aws hari 2.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://tradeco-api-wyk7a4jpva-et.a.run.app/api/v1/message",
+									"protocol": "https",
+									"host": [
+										"tradeco-api-wyk7a4jpva-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"api",
+										"v1",
+										"message"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "260"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"104-9ECRIwSCdbglOJG+q45Zrq5kh/k\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Feb 2024 09:38:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 201,\n    \"msg\": \"OK\",\n    \"data\": {\n        \"id\": 3,\n        \"SenderId\": 6,\n        \"ReceiverId\": 7,\n        \"text\": \"ini pake gambar\",\n        \"image\": \"https://storage.googleapis.com/user_posts-bucket/1708767497540_aws hari 2.png\",\n        \"updatedAt\": \"2024-02-24T09:38:18.236Z\",\n        \"createdAt\": \"2024-02-24T09:38:18.236Z\"\n    }\n}"
+						},
+						{
+							"name": "Create One Message",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "receiverId",
+											"value": "7",
+											"type": "text"
+										},
+										{
+											"key": "text",
+											"value": "ini pake gambar",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/johan/OneDrive/Pictures/Screenshots/aws hari 2.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/message",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"message"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "260"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"104-9ECRIwSCdbglOJG+q45Zrq5kh/k\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Feb 2024 09:38:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 201,\n    \"msg\": \"OK\",\n    \"data\": {\n        \"id\": 3,\n        \"SenderId\": 6,\n        \"ReceiverId\": 7,\n        \"text\": \"ini pake gambar\",\n        \"image\": \"https://storage.googleapis.com/user_posts-bucket/1708767497540_aws hari 2.png\",\n        \"updatedAt\": \"2024-02-24T09:38:18.236Z\",\n        \"createdAt\": \"2024-02-24T09:38:18.236Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get User Chats",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{idToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/messages",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"messages"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/v1/messages",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"v1",
+										"messages"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "537"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"219-waTC+R+DtKGGxmGKrCodvdO5uj0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Feb 2024 16:59:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"msg\": \"OK\",\n    \"data\": [\n        {\n            \"SenderId\": 7,\n            \"Sender\": {\n                \"id\": 7,\n                \"uid\": \"ohHxoxWSQLRdSt194J0cNtC66YJ2\",\n                \"email\": \"alfahluzi@gmail.com\",\n                \"displayName\": \"aldi\",\n                \"instagram\": null,\n                \"longitude\": null,\n                \"latitude\": null,\n                \"createdAt\": \"2024-02-17T12:18:19.854Z\",\n                \"updatedAt\": \"2024-02-17T12:18:19.854Z\"\n            }\n        },\n        {\n            \"SenderId\": 8,\n            \"Sender\": {\n                \"id\": 8,\n                \"uid\": \"vSJAh3kUGpceYikjgyb4ZgxXzmD3\",\n                \"email\": \"melissalau17300@gmail.com\",\n                \"displayName\": \"Mel\",\n                \"instagram\": null,\n                \"longitude\": null,\n                \"latitude\": null,\n                \"createdAt\": \"2024-02-21T01:50:41.938Z\",\n                \"updatedAt\": \"2024-02-21T01:50:41.938Z\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
