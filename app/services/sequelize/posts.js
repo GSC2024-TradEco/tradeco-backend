@@ -33,8 +33,8 @@ const createOnePost = async (req) => {
   });
 
   let postImage = null;
-  if (req.files) {
-    postImage = await upload(req.files[0]);
+  if (req.file) {
+    postImage = await upload(req.file);
   } 
 
   const post = await Post.create({
