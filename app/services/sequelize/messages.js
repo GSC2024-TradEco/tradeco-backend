@@ -90,8 +90,7 @@ const createOneMessage = async (req) => {
     },
   });
 
-  // const { uid } = req.user;
-  const uid = 'HePtihGWsOfwLFEfdeRhTBRXnrt2';
+  const { uid } = req.user;
   const sender = await User.findOne({
     where: {
       uid,
