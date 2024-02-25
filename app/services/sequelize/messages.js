@@ -16,21 +16,35 @@ const getUserChats = async (req) => {
   }
 
   const { page = 1, limit = 10 } = req.query;
-  const senderChats = await Message.findAll({
+  // const senderChats = await Message.findAll({
+  //   where: {
+  //     ReceiverId: user.id,
+  //   },
+  //   attributes: ['SenderId'],
+  //   group: ['SenderId', 'Sender.id'],
+  //   include: [
+  //     {
+  //       model: User,
+  //       as: 'Sender',
+  //     },
+  //   ],
+  // });
+
+  const senderChats = await User.findAll({
     where: {
-      ReceiverId: user.id,
-    },
-    attributes: ['SenderId'],
-    group: ['SenderId', 'Sender.id'],
-    include: [
-      {
-        model: User,
-        as: 'Sender',
+      id: {
+        [Op.ne]: user.id,
       },
-    ],
+    },
   });
 
-  return senderChats;
+  const senderChatsWithSenderKey = senderChats.map((user) => {
+    return {
+      Sender: user.toJSON(),
+    };
+  });
+
+  return senderChatsWithSenderKey;
 
   // return {
   //   data: senderChats.rows,
